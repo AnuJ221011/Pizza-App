@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/serverConfig');
 
-async function isloggedIn(req, res, next) {
+async function isLoggedIn(req, res, next) {
     const token = req.cookies['authToken'];
 
     if (!token) {
@@ -34,5 +34,5 @@ async function isloggedIn(req, res, next) {
 }
 
 module.exports = {
-    isloggedIn
+    isLoggedIn
 }
