@@ -12,6 +12,7 @@ const uploader = require('./middleware/multerMiddleware');
 const cloudinary = require('./config/cloudinaryConfig');
 // import fs module for file system operations
 const fs = require('fs');
+const productRouter = require('./routes/productRoute');
 
 const app = express();
 app.use(cookieParser()); // Middleware to parse cookies
@@ -22,7 +23,8 @@ app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-enco
 //routing middleware
 app.use('/users', userRouter);
 app.use('/carts', cartRouter);  
-app.use('/auth', authRouter)
+app.use('/auth', authRouter);
+app.use('/products', productRouter);
 
 app.get('/ping', isLoggedIn, (req, res) => {
     console.log(req.body);
