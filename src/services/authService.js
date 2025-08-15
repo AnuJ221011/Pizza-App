@@ -29,10 +29,13 @@ async function loginUser(authDetails) {
         };
     }
 
+    const userRole = user.role ? user.role : 'USER';
+
     // 3. If the password is valid, then we can return the user details
     const token = jwt.sign({
        id: user._id,
-       email: user.email
+       email: user.email,
+       role: userRole
     }, JWT_SECRET, {
         expiresIn: '1h'
     });

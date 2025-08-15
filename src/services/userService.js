@@ -1,5 +1,7 @@
 const { findUser, createUser } = require("../repositories/userRepository");
 
+const {createCart} = require("../repositories/cartRepository");
+
 
     async function registerUser(userDetails) {
         console.log("Hitting the user service registerUser method");
@@ -33,6 +35,9 @@ const { findUser, createUser } = require("../repositories/userRepository");
                 statusCode: 500
             };
         }
+
+        // creating cart for the new user
+        await createCart(newUser._id);
 
         // 4. We will return the details of the created user
 
